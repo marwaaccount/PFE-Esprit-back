@@ -34,7 +34,7 @@ public class candidat {
     @OneToMany(mappedBy = "candidat",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Experience> experiences;
 
-    @OneToMany(mappedBy = "candidat",fetch = FetchType.EAGER,cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "candidat",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JsonIgnore
     private List<candidatoffre> candidatOffres; // Relation avec la table de jointure
 

@@ -1,8 +1,8 @@
 package com.example.demo.services;
 
+import com.example.demo.Models.Personnel;
 import com.example.demo.Models.Voyage;
 import com.example.demo.Models.fichedepaie;
-import com.example.demo.Models.personnel;
 import com.example.demo.Repositories.VoyageRepository;
 import com.example.demo.Repositories.ficheRepository;
 import com.example.demo.Repositories.personnelRepository;
@@ -20,7 +20,7 @@ public class ficheServiceImp implements FicheService{
     personnelRepository personnelRepository;
     @Override
     public fichedepaie createfiche(fichedepaie fiche, int id) {
-        personnel personnel = personnelRepository.getById(id);
+    	Personnel personnel = personnelRepository.getById(id);
 
         fichedepaie fichedepaie =ficheRep.save(fiche);
         fichedepaie.setPersonnel(personnel);
@@ -78,7 +78,7 @@ public class ficheServiceImp implements FicheService{
     public double calculsalaire(int id) {
         double salaire=ficheRep.findById(id).get().getSalairenet();
         double salaireBrut=0;
-        personnel p=ficheRep.findById(id).get().getPersonnel();
+        Personnel p=ficheRep.findById(id).get().getPersonnel();
         fichedepaie f=ficheRep.findById(id).get();
        if (p.getGrade().equals("directeur")) {f.setRemHeure(31.25);}
        else if (p.getGrade().equals("sous-directeur")) {f.setRemHeure(25);}
@@ -87,11 +87,11 @@ public class ficheServiceImp implements FicheService{
        else if (p.getGrade().equals("secretaire")) {f.setRemHeure(6.25);}
 
 
-       if(p.getCategorie().equals("cadre superieur")) {f.setRemHeuresupp(30);}
-       else if (p.getCategorie().equals("cadre intermediaire")) {f.setRemHeuresupp(20);}
-       else if (p.getCategorie().equals("cadre jeune")) {f.setRemHeuresupp(10);}
-       else if (p.getCategorie().equals("employe")) {f.setRemHeuresupp(20);}
-       else if (p.getCategorie().equals("ouvrier")) {f.setRemHeuresupp(10);}
+       if(p.getCategorie() != null && p.getCategorie().equals("cadre superieur")) {f.setRemHeuresupp(30);}
+       else if (p.getCategorie() != null && p.getCategorie().equals("cadre intermediaire")) {f.setRemHeuresupp(20);}
+       else if (p.getCategorie() != null && p.getCategorie().equals("cadre jeune")) {f.setRemHeuresupp(10);}
+       else if (p.getCategorie() != null &&p.getCategorie().equals("employe")) {f.setRemHeuresupp(20);}
+       else if (p.getCategorie() != null && p.getCategorie().equals("ouvrier")) {f.setRemHeuresupp(10);}
 
        salaireBrut=f.getNbheuressupp()*f.getRemHeuresupp()+f.getRemHeure()*f.getNbheurestr();
 
@@ -100,8 +100,8 @@ public class ficheServiceImp implements FicheService{
        else if (p.getEnfantsacharge()==3) {salaireBrut+=30; }
        else if (p.getEnfantsacharge()>3) {salaireBrut+=40; }
 
-       if (p.getCategorie().equals("cadre superieur")) {salaireBrut+=500; f.setIndemnitetransport(500);}
-       else if (p.getCategorie().equals("cadre intermediaire")) {salaireBrut+=400; f.setIndemnitetransport(400);}
+       if (p.getCategorie() != null && p.getCategorie().equals("cadre superieur")) {salaireBrut+=500; f.setIndemnitetransport(500);}
+       else if (p.getCategorie() != null && p.getCategorie().equals("cadre intermediaire")) {salaireBrut+=400; f.setIndemnitetransport(400);}
 
         f.setCotisationAccident(salaireBrut*0.01);
        salaireBrut*=0.99;

@@ -24,14 +24,14 @@ public class fichedepaie {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "personnel")
     @JsonBackReference
-    private personnel personnel;
+    private Personnel personnel;
 
 
-    public personnel getPersonnel() {
+    public Personnel getPersonnel() {
         return personnel;
     }
 
-    public void setPersonnel(personnel personnel) {
+    public void setPersonnel(Personnel personnel) {
         this.personnel = personnel;
     }
 

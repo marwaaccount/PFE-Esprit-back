@@ -1,14 +1,11 @@
 package com.example.demo.services;
 
+import com.example.demo.Models.Personnel;
 import com.example.demo.Models.absence;
-
-import com.example.demo.Models.personnel;
 import com.example.demo.Repositories.AbsenceRepository;
 import com.example.demo.Repositories.personnelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -39,7 +36,7 @@ public class absenceServiceImp implements absenceService{
 
     @Override
     public absence ajouter(absence absence, int id) {
-        personnel p = personnelRep.findById(id).get();
+    	Personnel p = personnelRep.findById(id).get();
         absence.setPersonnel(p);
         absence.setEtat("en attente");
         return absenceRepo.save(absence);
@@ -98,7 +95,7 @@ public class absenceServiceImp implements absenceService{
     @Override
     public void approve(int id, int nb) {
         absence abs=absenceRepo.findById(id).get();
-        personnel p=abs.getPersonnel();
+        Personnel p=abs.getPersonnel();
         p.setSoldeconge((p.getSoldeconge()-nb));
        // System.out.println(p.getSoldeconges());
         System.out.println(nb);

@@ -15,17 +15,26 @@ public class PersonnelDTO {
     private byte enfantsacharge;
     private String categorie;
     private int soldeconge;
-    private role role;
+	private String role_User;
+	private boolean actif;
+	
+    public String getRole_User() {
+		return role_User;
+	}
 
-    public com.example.demo.Models.role getRole() {
-        return role;
-    }
+	public void setRole_User(String role_User) {
+		this.role_User = role_User;
+	}
 
-    public void setRole(com.example.demo.Models.role role) {
-        this.role = role;
-    }
+	public boolean isActif() {
+		return actif;
+	}
 
-    public String getNom() {
+	public void setActif(boolean actif) {
+		this.actif = actif;
+	}
+
+	public String getNom() {
         return nom;
     }
 
@@ -105,11 +114,10 @@ public class PersonnelDTO {
         this.soldeconge = soldeconge;
     }
     // Constructeur avec tous les attributs
-    public PersonnelDTO(role role,String nom, String prenom, String adresse, String email,
+    public PersonnelDTO(String nom, String prenom, String adresse, String email,
                         String motdepasse, String numTelephone, Long id,
                         String poste, String grade, long idcnss, long cin,
                         byte enfantsacharge, String categorie, int soldeconge) {
-        this.role=role;
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;

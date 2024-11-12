@@ -25,17 +25,17 @@ public class OffreEmploi {
     private String localisation;
     private LocalDateTime datefin;
 
-    @OneToMany(mappedBy = "offre")
-    @JsonManagedReference(value="candidat-offreemploi")
-    private List<candidatoffre> candidatOffres; // Relation avec la table de jointure
+//    @OneToMany(mappedBy = "offre")
+//    @JsonManagedReference(value="candidat-offreemploi")
+//    private List<candidatoffre> candidatOffres; // Relation avec la table de jointure
 
-    public List<candidatoffre> getCandidatOffres() {
-        return candidatOffres;
-    }
-
-    public void setCandidatOffres(List<candidatoffre> candidatOffres) {
-        this.candidatOffres = candidatOffres;
-    }
+//    public List<candidatoffre> getCandidatOffres() {
+//        return candidatOffres;
+//    }
+//
+//    public void setCandidatOffres(List<candidatoffre> candidatOffres) {
+//        this.candidatOffres = candidatOffres;
+//    }
 
     public int getId() {
         return id;

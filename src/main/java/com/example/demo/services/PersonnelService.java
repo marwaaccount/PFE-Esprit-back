@@ -1,21 +1,24 @@
 package com.example.demo.services;
 
+import com.example.demo.Models.ChangePassword;
 import com.example.demo.Models.OffreEmploi;
+import com.example.demo.Models.Personnel;
 import com.example.demo.Models.fichedepaie;
-import com.example.demo.Models.personnel;
 
 import java.util.List;
 
 public interface PersonnelService {
 
 
-    List<personnel> getAllPersonnel();
-    personnel getPersonnelById(int id);
+    List<Personnel> getAllPersonnel();
+    Personnel getPersonnelById(int id);
     void deletePersonnel(int id);
-    personnel createPersonnel(personnel personnel);
-    personnel updatePersonnel(personnel personnel);
+    Personnel createPersonnel(Personnel personnel);
+    Personnel updatePersonnel(Personnel personnel);
+    Personnel updatePwd(ChangePassword changePassword) throws Exception;
+
     String getNomByCin(int cin);
 
-    personnel getpersonnelbyid(int id);
+    Personnel getpersonnelbyid(int id);
 
 }

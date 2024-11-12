@@ -29,7 +29,7 @@ public class Entretien {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "personnel")
     @JsonBackReference
-    private personnel personnel;
+    private Personnel personnel;
 
     public int getId() {
         return id;
@@ -71,11 +71,11 @@ public class Entretien {
         this.candidatOffre = candidatOffre;
     }
 
-    public com.example.demo.Models.personnel getPersonnel() {
+    public Personnel getPersonnel() {
         return personnel;
     }
 
-    public void setPersonnel(com.example.demo.Models.personnel personnel) {
+    public void setPersonnel(Personnel personnel) {
         this.personnel = personnel;
     }
 }

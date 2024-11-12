@@ -4,7 +4,10 @@ package com.example.demo.Models;
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.GrantedAuthority;
 
+import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 //import org.springframework.data.annotation.Id;
 
@@ -12,7 +15,7 @@ import java.util.List;
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @Entity
 @JsonView(Views.Summary.class)
-public class personnel extends User {
+public class Personnel extends User {
 
     private String poste;
     private String grade;
@@ -48,14 +51,6 @@ public class personnel extends User {
     @JsonBackReference
     private List<absence> absences;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "role")
-    @JsonBackReference("personnel-role")
-    //@JsonIgnore
-    private role role;
-
-
-
     public long getIdcnss() {
         return idcnss;
     }
@@ -70,14 +65,6 @@ public class personnel extends User {
 
     public void setCin(long cin) {
         this.cin = cin;
-    }
-
-    public role getRole() {
-        return role;
-    }
-
-    public void setRole(role role) {
-        this.role = role;
     }
 
     public List<absence> getAbsences() {
@@ -135,5 +122,6 @@ public class personnel extends User {
     public String getPoste() {
         return poste;
     }
+
 }
 

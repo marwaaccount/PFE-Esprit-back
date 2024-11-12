@@ -26,7 +26,7 @@ public class absence {
     @JsonManagedReference
     //@JsonView(Views.Summary.class)
     @JsonIgnore // Change ici pour éviter la boucle de sérialisation
-    private personnel personnel;
+    private Personnel personnel;
 
 
 
@@ -88,11 +88,11 @@ public class absence {
         this.type = type;
     }
 
-    public com.example.demo.Models.personnel getPersonnel() {
+    public Personnel getPersonnel() {
         return personnel;
     }
 
-    public void setPersonnel(com.example.demo.Models.personnel personnel) {
+    public void setPersonnel(Personnel personnel) {
         this.personnel = personnel;
     }
 }

@@ -2,7 +2,6 @@ package com.example.demo.Models;
 
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -10,9 +9,11 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class candidatoffre {
 
     @Id
@@ -31,7 +32,7 @@ public class candidatoffre {
 
     @ManyToOne
     @JsonIgnore
-    @JoinColumn(name = "offre_id")
+    @JoinColumn(name = "offre_id") 
     private OffreEmploi offre;
 
     @OneToMany(mappedBy = "candidatOffre")

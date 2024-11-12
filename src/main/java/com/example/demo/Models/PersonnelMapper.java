@@ -1,9 +1,8 @@
 package com.example.demo.Models;
 
 public class PersonnelMapper {
-    public static PersonnelDTO toDTO(personnel p) {
+    public static PersonnelDTO toDTO(Personnel p) {
         return new PersonnelDTO(
-                p.getRole(),
                 p.getNom(),
                 p.getPrenom(),
                 p.getAdresse(),
@@ -21,9 +20,8 @@ public class PersonnelMapper {
         );
     }
 
-    public static personnel toEntity(PersonnelDTO dto) {
-        personnel p = new personnel();
-        p.setRole(dto.getRole());
+    public static Personnel toEntity(PersonnelDTO dto) {
+    	Personnel p = new Personnel();
         p.setNom(dto.getNom());
         p.setPrenom(dto.getPrenom());
         p.setAdresse(dto.getAdresse());

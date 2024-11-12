@@ -68,8 +68,8 @@ public class absenceController {
     }
 
     @GetMapping("/getpersonnelById/{id}")
-    public personnel getpersonnel( @PathVariable int id) {
-        personnel p = personnelservice.getPersonnelById(id);
+    public Personnel getpersonnel( @PathVariable int id) {
+    	Personnel p = personnelservice.getPersonnelById(id);
 
         return new ResponseEntity<>(p, HttpStatus.OK).getBody();
     }
