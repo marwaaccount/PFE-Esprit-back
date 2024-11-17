@@ -39,14 +39,14 @@ public class Personnel extends User {
 
 
 
-    @OneToMany(mappedBy = "personnel", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "personnel", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<fichedepaie> fichesdepaie;
     @OneToMany(mappedBy = "personnel")
     @JsonManagedReference
     private List<Entretien> entretiens;
 
-    @OneToMany(mappedBy = "personnel", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "personnel", fetch = FetchType.EAGER , cascade = CascadeType.ALL, orphanRemoval = true)
     //@JsonIgnore // Évite la sérialisation des absences pour éviter les boucles
     @JsonBackReference
     private List<absence> absences;
